@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      >
+    <f:view contentType="text/html">
+        <h:head>
+            <meta http-equiv="content-type"
+                  content="text/html; charset=UTF-8" />
+            <link type="text/css"  rel="stylesheet" href="/styles/reset.css" />
+            <link type="text/css"  rel="stylesheet" href="/styles/styles.css" />
+            <link type="text/css"  rel="stylesheet" href="/styles/bugs.css" />
+
+            <style type="text/css">
+                .sp-logout-link {
+                    text-decoration: none;
+                }
+
+                .sp-logout-link:hover {
+                    text-decoration: underline;
+                }
+
+                #main_panel .wijmo-wijmenu-link .wijmo-wijmenu-text {
+                    color: white;
+                }
+
+                #main_panel .ui-state-hover .wijmo-wijmenu-text  {
+                    color: #0FA0C4;
+                }
+
+                #main_panel .wijmo-wijmenu {
+                    padding: 0px;
+                }
+
+                #main_panel .ui-panel-titlebar {
+                    padding: 10px 10px 5px 10px;
+                }
+            </style>
+
+
+            <title>Panel</title>
+            <ui:insert name="head"></ui:insert>
+
+
+
+
+
+
+        </h:head>
+        <h:body>
+            <div id="header">
+                <script type="text/javascript">
+                  jQuery.ajaxSetup({
+                      error: handleXhrError
+                  });
+
+                  function handleXhrError(xhr) {
+                      document.open();
+                      window.location.reload();
+                      window.location.href="index.xhtml";
+                      document.close();
+                  }
+
+
+                        PrimeFaces.locales ['pl'] = {
+                                         closeText: 'Zamknij',
+                                         prevText: 'Poprzedni',
+                                         nextText: 'Następny',
+                                         currentText: 'Start',
+                                         monthNames: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień' ],
+                                         monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paz', 'Lis', 'Gru' ],
+                                         dayNames: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'],
+                                         dayNamesShort: ['nd', 'pn', 'wt', 'śr', 'czw', 'pt', 'sob'],
+                                         dayNamesMin: ['N', 'P', 'W', 'Ś ', 'C', 'P ', 'S'],
+                                         weekHeader: 'Tydzień',
+                                         FirstDay: 1,
+                                         isRTL: false,
+                                         showMonthAfterYear: false,
+                                         yearSuffix:'',
+                                         timeOnlyTitle: 'Tylko Czas',
+                                         timeText: 'Czas',
+                                         hourText: 'Godzina',
+                                         minuteText: 'Minuta',
+                                         secondText: 'Sekudna',
+                                         currentText: 'Aktualna Data',
+                                         ampm: false,
+                                         month: 'Miesiąc',
+                                         week: 'Tydzień',
+                                         day: 'Dzień',
+                                         allDayText: 'Cały Dzień'
+                                     };
+
+            function handleAddFloatboxViewRequest(xhr, status, args) {
+                //alert("Dziala?");
+                //alert("args.validFailed " + args.validFailed);
+                //alert("args.validationFailed " + args.validationFailed);
+                if(args.validationFailed || args.validFailed){
+                    //alert("ERROR");
+                    jQuery('#floatboxDialog').effect("shake", { times:3 }, 100);
+                } else {
+                    //alert("Dobrze");
+                    floatboxDialogW.hide();
+                }
+            }
+            
+            function handleAddBannerViewRequest(xhr, status, args) {
+                //alert("Dziala?");
+                //alert("args.validFailed " + args.validFailed);
+                //alert("args.validationFailed " + args.validationFailed);
+                if(args.validationFailed || args.validFailed){
+                    //alert("ERROR");
+                    jQuery('#bannerDialog').effect("shake", { times:3 }, 100);
+                } else {
+                    //alert("Dobrze");
+                    bannerDialogW.hide();
+                }
+            }
+                </script>
+            </div>
+            <div id="container">
+                <span class="sp-subheader"> </span>
+                <p:panel id="main_panel" style="margin-top: 20px">
+                    <f:facet name="header">
+                        <div style="color: #EEE; text-shadow: #0FA0C4 1px 1px 0; font-size: 15px; margin-bottom: 15px;">Panel Reklam : #{subheader}</div>
+                        <div style="position: absolute; top: 10px; right: 10px; ">
+                            <h:outputLink value="/j_spring_security_logout" styleClass="sp-logout-link" >WYLOGUJ</h:outputLink>
+                        </div>
+                        <ui:insert name="menubar" />
+                    </f:facet>
+                    <p:messages id="messages" globalOnly="true">
+                        <p:effect type="blind" event="load" delay="5000">
+                            <f:param name="mode" value="'hide'" />
+                        </p:effect>
+                    </p:messages>
+<!--                    <p:growl id="msg" />-->
+                    <ui:insert name="content">
+                    </ui:insert>
+                    <br/>
+                    <br/>
+                </p:panel>
+            </div>
+            <ui:insert name="subpanel">
+            </ui:insert>
+            <div id="footer">
+                <span style="float: left">Panel (wersja #{systemManager.version} #{systemManager.production ? '' : 'DEV'})</span>
+            </div>
+            <ui:insert name="dialogs">
+            </ui:insert>
+        </h:body>
+    </f:view>
+</html>

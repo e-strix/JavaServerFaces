@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <link type="text/css"  rel="stylesheet" href="/styles/reset.css" />
+            <link type="text/css"  rel="stylesheet" href="/styles/styles.css" />
+            <link type="text/css"  rel="stylesheet" href="/styles/bugs.css" />
+    
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>e-strixCMS Login</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #000;">
+            <div id="header">
+            <script type="text/javascript">
+                jQuery.ajaxSetup({
+                      error: handleXhrError
+                  });
+
+                  function handleXhrError(xhr) {
+                      document.open();
+                      window.location.reload();
+                      window.location.href="index.xhtml";
+                      document.close();
+                  }
+
+
+                        PrimeFaces.locales ['pl'] = {
+                                         closeText: 'Zamknij',
+                                         prevText: 'Poprzedni',
+                                         nextText: 'Następny',
+                                         currentText: 'Start',
+                                         monthNames: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień' ],
+                                         monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paz', 'Lis', 'Gru' ],
+                                         dayNames: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'],
+                                         dayNamesShort: ['nd', 'pn', 'wt', 'śr', 'czw', 'pt', 'sob'],
+                                         dayNamesMin: ['N', 'P', 'W', 'Ś ', 'C', 'P ', 'S'],
+                                         weekHeader: 'Tydzień',
+                                         FirstDay: 1,
+                                         isRTL: false,
+                                         showMonthAfterYear: false,
+                                         yearSuffix:'',
+                                         timeOnlyTitle: 'Tylko Czas',
+                                         timeText: 'Czas',
+                                         hourText: 'Godzina',
+                                         minuteText: 'Minuta',
+                                         secondText: 'Sekudna',
+                                         currentText: 'Dziś',
+                                         ampm: false,
+                                         month: 'Miesiąc',
+                                         week: 'Tydzień',
+                                         day: 'Dzień',
+                                         allDayText: 'Cały Dzień'
+                                     };
+            </script> 
+            </div>
+            <div id="container">
+            <p:layout fullPage="true">
+                
+                <p:growl id="growl" showDetail="true">
+                    <p:effect type="blind" event="load" delay="5000">
+                        <f:param name="mode" value="'hide'" />
+                    </p:effect>
+                </p:growl>
+               
+
+
+                <p:layoutUnit position="center" >
+                   <h:form id="loginForm" prependId="false" >
+                        <p:panel header="Logowanie" style="width: 520px !important;margin: 0 auto;">  
+                            <h:panelGrid columns="4" cellpadding="10" style="width: 300px;"  border="0" footerClass="subtitle" headerClass="subtitlebig" styleClass="medium" columnClasses="subtitle,medium">
+                                <label for="j_username" >
+                                    <h:outputText value="Login(email):" style="display: block; margin-top:10px;" />
+                                </label>
+                                <p:inputText  id="j_username" value="#{springLoginMB.userName}" required="true" style="margin-top:10px;" converterMessage="Niepoprawna nazwa użytkownika." requiredMessage="Wymagana jest nazwa użytkownika." validatorMessage="Niepoprawna nazwa użytkownika." />
+                                <label for="j_password">
+                                    <h:outputText value="Hasło:" style="display: block; margin-top:10px;" />
+                                </label>
+                                <p:password id="j_password" value="#{springLoginMB.password}" required="true" style="margin-top:10px;" validatorMessage="Niepoprawne hasło." requiredMessage="Wymagane jest hasło."  />
+                                <label for="j_spring_security_remember_me" >
+                                    <h:outputText value="Zapamiętaj mnie" style="display: block; margin-top:10px;" />
+                                </label>
+                                <p:selectBooleanCheckbox  id="_spring_security_remember_me" value="#{springLoginMB.rememberMe}" style=" margin-top:10px;" />
+<!--                                <h:selectBooleanCheckbox  id="_spring_security_remember_me" />-->
+                                
+                                <h:outputText value=" " />
+                                <f:facet name="footer" >
+                                    <h:commandButton type="submit" id="login" action="#{springLoginMB.loginAction}" value="Zaloguj" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="margin: 10px auto; display: block; width:168px; height: 28px;"  />
+                                    
+                                </f:facet>
+                         </h:panelGrid>
+                        </p:panel>                        
+                   </h:form>                   
+                    
+                  
+                </p:layoutUnit>
+                </p:layout>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

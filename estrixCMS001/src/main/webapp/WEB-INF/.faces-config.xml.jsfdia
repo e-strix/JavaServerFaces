@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#protected#index.xhtml"
+  PATH="/protected/index.xhtml" SHAPE="240,289,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#protected#index.xhtml:0" NAME="item"
+   PATH="/protected/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#protected#success.xhtml"
+    NAME="output" PATH="/protected/success.xhtml"
+    TARGET="rules:#protected#success.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="error::#protected#error.xhtml"
+    NAME="output1" PATH="/protected/error.xhtml"
+    TARGET="rules:#protected#error.xhtml" TITLE="error" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="loggedout::#index.xhtml" NAME="output2"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="loggedout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#protected#error.xhtml"
+  PATH="/protected/error.xhtml" SHAPE="464,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#protected#success.xhtml"
+  PATH="/protected/success.xhtml" SHAPE="464,241,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="240,104,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Protected:#{springLoginMB.loginAction}:#protected#index.xhtml"
+    NAME="output" PATH="/protected/index.xhtml"
+    TARGET="rules:#protected#index.xhtml"
+    TITLE="#{springLoginMB.loginAction}:Protected" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

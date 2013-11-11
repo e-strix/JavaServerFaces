@@ -1,0 +1,295 @@
+/*------------------------------------*\
+  STYLE PODSTAWOWE
+\*------------------------------------*/
+
+
+
+body {
+/*    color: #316B7B ;*/
+/*    background-color: #E6E6E6;*/
+    margin: 0;
+    font: 10px Arial;
+    line-height: 1.5em;
+}
+
+
+img {
+    border: 0;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.ui-widget {
+    font-size: 11px;
+}
+
+.ui-selectonemenu-item {
+    font-size: 11px;
+}
+
+/*--- HEADINGS ---*/
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.5em;
+    font-weight: bold;
+    color: #07495A;
+}
+
+h1 {
+    font-size: 1.5em; /* 24px --> 24 ÷ 16 = 1.5 */
+    line-height: 1em; /* 24px --> 24 ÷ 24 = 1 */
+}
+
+h2 {
+    font-size: 1.375em; /* 22px --> 22 ÷ 16 = 1.375 */
+    line-height: 1.0909em; /* 24px --> 24 ÷ 22 = 1.090909(09) */
+}
+
+h3 {
+    font-size: 1.25em; /* 20px --> 20 ÷ 16 = 1.25 */
+    line-height: 1.2em; /* 24px --> 24 ÷ 20 = 1.2 */
+}
+
+h4 {
+    font-size: 1.125em; /* 18px --> 18 ÷ 16 = 1.125 */
+    line-height: 1.333em; /* 24px --> 24 ÷ 18 = 1.3333333(3) */
+}
+
+h5, h6 {
+    font-size: 1em; /* 16px --> 16 ÷ 16 = 1 */
+    line-height: 1.5em; /* 24px --> 24 ÷ 16 = 1.5 */
+}
+
+
+#basic:modelHeader_filter .ui-datatable .ui-column-filter {width: 40px !important; }
+.ui-datatable .ui-column-filter {color: #2E6E9E;}
+select {width: 50px !important;}
+#basic:j_idt20_filter {width:10px !important; border: 1px solid;}
+.ui-datatable th div.ui-dt-c, .ui-datatable .ui-datatable-data td div.ui-dt-c, .ui-datatable .ui-datatable-data-empty td div.ui-dt-c, .ui-datatable tfoot td div.ui-dt-c {overflow: visible !important;}
+.ui-checkbox .ui-checkbox-relative {float: none !important;}
+
+/*--- LISTS ---*/
+ul, ol {
+    margin-bottom: 18px;
+}
+
+ul {
+    list-style: square outside;
+}
+
+ul ul,
+ol ol {
+    margin: 0 0 0 0px;
+}
+
+label {margin-right: 10px;}
+#IvrNumberForm:description{padding: 3px; color: red;}
+/*tr {padding: 2px; border: 1px solid;display: block;}*/
+/*------------------------------------*\
+  LAYOUT
+\*------------------------------------*/
+
+
+#container {
+/*    margin: 0 auto;
+    width: 1200px;*/
+}
+
+#footer {
+/*    color: #666;*/
+    margin: 10px auto;
+/*    width: 980px;*/
+    overflow: hidden;
+    text-shadow: white 1px 1px 0px;
+    margin-bottom: 50px;
+}
+
+#footer a {
+/*    color: #666;*/
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 10px;
+}
+#footer a:hover {
+    text-decoration: underline;
+}
+
+/*------------------------------------*\
+  ELEMENTY STRONY
+\*------------------------------------*/
+
+
+.message {
+    font: 8pt Arial;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    display: block;
+}
+
+.message .ui-panel-content {
+    padding: 10px;
+}
+
+.message.ok {
+    border: 1px solid #B4E8AA;
+    background: #E9F9E5;
+    color: #1C8400;
+}
+
+.message.notice {
+    border: 1px solid #AAC6E8;
+    background: #E5ECF9;
+    color: #0055B5;
+}
+
+.message.warning {
+    border: 1px solid #E8E3AA;
+    background: #F9F9E5;
+    color: #828400;
+}
+
+.message.error {
+    border: 1px solid #E8AAAD;
+    background: #F9E5E6;
+    color: #B50007;
+}
+
+
+
+.form-set {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.form-labels {
+    width: 130px;
+    padding: 2px 5px 2px 0;
+    vertical-align: bottom;
+}
+
+.form-labels label {
+    display: block;
+    padding: 3px 0;
+    border-bottom: 1px dotted #999;
+}
+.form-labels-170px{
+    width: 170px !important;
+}
+.form-values {
+    font-size: 10pt;
+}
+
+.form-values-265px input.ui-inputfield{
+    width: 265px !important;
+}
+
+
+.form-fields {
+    vertical-align: middle;
+    padding: 2px 0;
+}
+
+.form-buttons {
+    vertical-align: middle;
+    text-align: right;
+    padding: 2px 0;
+    width: 100%;
+}
+
+.form-fields input.ui-inputfield {
+    width: 242px;
+
+}
+
+.form-fields textarea.ui-inputfield {
+    width: 242px;
+}
+
+.form-fields select {
+    width: 250px;
+}
+
+.form-fields span.form-datepicker input {
+    width: 108px;
+}
+
+.form-fields span.form-datepicker-time input {
+    width: 64px;
+    margin-right: 5px;
+}
+
+.form-fields select.form-datepicker-time {
+    width: 39px;
+}
+
+
+.form-fields input.form-short-input {
+    width: 108px !important;
+}
+
+
+.px-help-tip {
+    border: 1px solid #CCCCCC;
+    border-radius : 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 0px 10px 0px;
+    color: #666666;
+    text-shadow: white 1px 1px 0px;
+    font-weight: bold;
+    background-color: #EEEEEE;
+}
+
+.px-help-tip .px-help-text {
+    margin-left: 30px;
+}
+
+select{
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #A6C9E2;
+    font-weight: bold;
+    color: #4f4f4f;
+    text-decoration: none;
+    min-height: 14px;
+    padding: 3px;
+    margin: 0;
+}
+
+
+ .ui-widget-content .ui-inputfield {width: 158px !important;}
+#layoutUnitTop .ui-layout-unit-content .ui-widget-content {width: 770px !important; margin: 0 auto !important;}
+#popupCalStart input {text-align: center; width:184px !important;}
+#popupCalStop  input {text-align: center; width:184px !important;}
+.ui-dock-item-bottom span {color: black;}
+
+#loginForm { color: #fff; width: 327px; height: 185px; background-repeat: no-repeat; position: absolute; top: 40%; left:50%; margin: -130px 0 0 20px; background-color: transparent;}
+#registerForm { color: #fff; width: 327px; height: 185px; background-repeat: no-repeat; position: absolute; top: 40%; left: 50%; margin: -130px 0 0 -325px; background-color: transparent;}
+
+
+.sp-labels-col {
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.sp-inputs-col {
+    width: 150px;
+    vertical-align: top;
+}
+
+.sp-header {
+    margin-bottom: 10px;
+    font-size: 1.375em; /* 22px --> 22 ÷ 16 = 1.375 */
+    line-height: 1.0909em; /* 24px --> 24 ÷ 22 = 1.090909(09) */
+    font-weight: bold;
+    color: #07495A;
+}
+
+.ui-selectmanycheckbox td label {
+    padding-left: 10px;
+}
+
+

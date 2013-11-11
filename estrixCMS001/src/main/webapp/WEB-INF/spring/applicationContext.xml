@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	      http://www.springframework.org/schema/tx
+	      http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	      http://www.springframework.org/schema/context
+	      http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	      http://www.springframework.org/schema/util
+	      http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-autowire="byName">
+	
+
+	<!-- Beans Declaration -->
+	<bean id="User" class="pl.estrix.app.basic.user.model.User"/>
+	<bean id="UserRoles" class="pl.estrix.app.basic.user.model.UserRoles"/>
+	
+	
+	<bean id="StringUtils" class="pl.estrix.utils.StringUtils"/>
+	
+	
+	<!-- User Service Declaration -->
+	<bean id="UserService" class="pl.estrix.app.basic.user.service.UserService">
+		<property name="userDAO" ref="UserDAO" />
+		<property name="language" value="${jdbc.databaseurl}" />
+	</bean>
+	<!-- User Service Declaration -->
+	<bean id="UserRolesService" class="pl.estrix.app.basic.user.service.UserRolesService">
+		<property name="userRolesDAO" ref="UserRolesDAO" />
+	</bean>
+	
+	
+	<bean id="springLoginBean" name="springLoginBean" class="pl.estrix.utils.security.SpringLoginBean" scope="prototype">
+        <property name="authenticationManager" ref="authenticationManager"></property>
+    </bean>
+	
+	
+	<!-- User DAO Declaration -->
+	<bean id="UserDAO" class="pl.estrix.app.basic.user.dao.UserDAO">
+		<property name="sessionFactory" ref="SessionFactory" />
+	</bean>
+	<!-- UserRoles DAO Declaration -->
+	<bean id="UserRolesDAO" class="pl.estrix.app.basic.user.dao.UserRolesDAO">
+		<property name="sessionFactory" ref="SessionFactory" />
+	</bean>
+	
+	
+  
+</beans>

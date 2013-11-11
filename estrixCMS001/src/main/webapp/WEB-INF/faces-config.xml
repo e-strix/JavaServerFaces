@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+    version="2.1">
+  	
+  	<!-- JSF and Spring are integrated -->
+  	<application>
+    	<el-resolver>
+    		org.springframework.web.jsf.el.SpringBeanFacesELResolver
+    	</el-resolver>
+  	</application>
+	
+	<!-- configuration of navigation rules -->	
+	<navigation-rule>
+		<display-name>protected/index.xhtml</display-name>
+	    <from-view-id>/protected/index.xhtml</from-view-id> 
+	    <navigation-case>
+	        <from-outcome>success</from-outcome>
+            <to-view-id>/protected/success.xhtml</to-view-id>
+        </navigation-case>
+         <navigation-case>
+	        <from-outcome>error</from-outcome>
+            <to-view-id>/protected/error.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>loggedout</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <display-name>index.xhtml</display-name>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{springLoginMB.loginAction}</from-action>
+            <from-outcome>Protected</from-outcome>
+            <to-view-id>/protected/index.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>

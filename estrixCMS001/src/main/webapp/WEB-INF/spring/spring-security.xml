@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    					http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/security 
+                        http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    
+    <http auto-config="true">
+        <intercept-url pattern="/protected/*"  access="ROLE_USER,ROLE_ADMIN"/>
+<!--         <intercept-url pattern="/**" access="permitAll"/> -->
+        
+        <form-login 
+            default-target-url="/protected/index.jsf"
+            login-page="/index.jsf"
+            authentication-failure-url="/index.jsf?state=failure"
+            />   
+        <remember-me key="jsfspring-sec" services-ref="rememberMeServices"/>
+        <logout  invalidate-session="true" logout-success-url="/index.jsf" />
+    </http>
+    
+    <beans:bean id="rememberMeServices" class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices">
+        <beans:property name="key" value="jsfspring-sec" />
+        <beans:property  name="userDetailsService" ref="userDetailsService" />
+        <beans:property  name="alwaysRemember" value="true" />
+        <beans:property  name="tokenValiditySeconds" value="60" />
+    </beans:bean>
+
+    <beans:bean id="rememberMeAuthenticationProvider"
+        class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
+        <beans:property name="key" value="jsfspring-sec"/>
+    </beans:bean>
+
+<!--                                authorities-by-username-query="select username, authority from users where username=?"/> -->
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider >
+            <password-encoder hash="md5"/>
+            <jdbc-user-service data-source-ref="DataSource" id="userDetailsService"
+								users-by-username-query="select U.email AS username, U.password as password, 'true' as enabled from users U where U.email=?"  
+                               authorities-by-username-query="select U.email AS username, UR.authority as authorities from users U, user_roles UR where U.email=? AND U.id = UR.user_id"
+                               />
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>
+    
+<!--     <http auto-config="true"> -->
+<!--         <intercept-url pattern="/protected/*"  access="ROLE_USER,ROLE_ADMIN"/> -->
+<!--         <intercept-url pattern="/**" access="permitAll"/> -->
+        
+<!--         <form-login  -->
+<!--             default-target-url="/protected/index.jsf" -->
+<!--             login-page="/index.jsf" -->
+<!--             authentication-failure-url="/index.jsf?state=failure" -->
+<!--             />    -->
+<!--         <remember-me key="jsfspring-sec" services-ref="rememberMeServices"/> -->
+<!--         <logout  invalidate-session="true" logout-success-url="/index.jsf" /> -->
+<!--     </http> -->
+    
+<!--     <beans:bean id="rememberMeServices" class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices"> -->
+<!--         <beans:property name="key" value="jsfspring-sec" /> -->
+<!--         <beans:property  name="userDetailsService" ref="userDetailsService" /> -->
+<!--         <beans:property  name="alwaysRemember" value="true" /> -->
+<!--         <beans:property  name="tokenValiditySeconds" value="60" /> -->
+<!--     </beans:bean> -->
+
+<!--     <beans:bean id="rememberMeAuthenticationProvider" -->
+<!--         class="org.springframework.security.authentication.RememberMeAuthenticationProvider"> -->
+<!--         <beans:property name="key" value="jsfspring-sec"/> -->
+<!--     </beans:bean> -->
+
+<!--     <authentication-manager alias="authenticationManager"> -->
+
+<!--         <authentication-provider> -->
+<!--             <password-encoder hash="md5"/> -->
+<!--             <jdbc-user-service data-source-ref="DataSource" id="userDetailsService" -->
+<!--                                authorities-by-username-query="select U.email AS username, U.password as password, U.enabled as enabled from users U where U.email=?"/> -->
+<!--         </authentication-provider> -->
+<!--     </authentication-manager> -->
+<!-- </beans:beans> -->
