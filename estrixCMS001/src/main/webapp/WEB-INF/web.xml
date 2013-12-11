@@ -37,6 +37,12 @@
 		</listener-class>
 	  </listener>
 	  
+	  <!-- Motyw pimefaces -->
+	  <context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>redmond</param-value>
+	</context-param>
+	  
 	<!-- Spring Security filter -->
 		<filter>
 			<filter-name>springSecurityFilterChain</filter-name>
